@@ -1,0 +1,12 @@
+idiomas.py crea una interfaz gráfica con las opciones.
+
+el archivo idiomas.spec se edita con bloc de notas y compila el idiomas.py en un .exe
+con un icono personalizado.
+
+
+Para compilar el .exe
+
+Abrir CMD
+ir a cd carpeta Selector de idioma
+pyinstaller --clean idiomas.spec
+Se generará una carpeta build y una dist. Dentro de la dist se halla el .exe (estas carpetas se pueden eliminar una vez generado el .exe)
