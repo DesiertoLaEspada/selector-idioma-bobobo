@@ -9,14 +9,25 @@ if getattr(sys, 'frozen', False):
 else:
     current_dir = os.getcwd()  # Usamos el directorio de trabajo actual
 
+# Ajustar rutas de los binarios (usa las rutas relativas para empaquetar)
+binaries = [
+    ('C:/Program Files/MKVToolNix/mkvmerge.exe', '.'), 
+    ('C:/Program Files/MKVToolNix/mkvpropedit.exe', '.')
+]
+
+# Añadir iconos y otros recursos al bundle
+datas = [
+    ('icons/twitter_icon.png', 'icons'),
+    ('icons/instagram_icon.png', 'icons'),
+    ('icons/youtube_icon.png', 'icons'),
+    ('icons/tiktok_icon.png', 'icons')
+]
+
 a = Analysis(
     ['idiomas.py'],
-    pathex=[current_dir],  # Directorio actual
-    binaries=[
-        ('C:/Program Files/MKVToolNix/mkvmerge.exe', '.'), 
-        ('C:/Program Files/MKVToolNix/mkvpropedit.exe', '.')
-    ],
-    datas=[],
+    pathex=['.'],
+    binaries=binaries,
+    datas=datas,
     hiddenimports=[],
     hookspath=[],
     runtime_hooks=[],
@@ -44,6 +55,5 @@ exe = EXE(
     upx_exclude=[],
     runtime_tmpdir=None,
     console=False,
-    # Ruta relativa al icono (directorio actual + /icons/icono.ico)
-    icon=os.path.join(current_dir, 'icons', 'icono.ico')  
+    icon='icons/icono.ico'
 )
